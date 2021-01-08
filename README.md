@@ -33,3 +33,12 @@ root           2       0  0 Dec25 ?        00:00:00 [kthreadd]
 
 ## PID 0 is swapper / sched and is run as part of kernel (not user mode process), hence not shown in ps output
 
+# ------- volatile_test.c
+A test program to show the use of volatile declaration in C
+
+If the program is compiled as "gcc -O2 volatile_test.c -lpthread", then thread 2 exits after changing the value of 'a' to 6
+but thread 1 doesn't exit.
+
+If 'a' is declared as 'volatile int', then after "gcc -O2 volatile_test.c -lpthread", when the program is run, thread 2 exits after
+changing value of 'a' and then thread 1 exits the loop.
+
