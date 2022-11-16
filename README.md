@@ -42,3 +42,12 @@ but thread 1 doesn't exit.
 If 'a' is declared as 'volatile int', then after "gcc -O2 volatile_test.c -lpthread", when the program is run, thread 2 exits after
 changing value of 'a' and then thread 1 exits the loop.
 
+# ------- my_shared_lib
+Steps to compile a shared library using gcc/g++
+
+
+1. g++ -fPIC -c -o test.o test.cpp
+2. g++ -shared -fPIC -o libtest.so test.o
+3. g++ -L<path to directory where libtest.so is present> main.cpp -l test
+4. ./a.out
+
